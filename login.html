@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Reddit</title>
+    <link rel="stylesheet" href="src/login.css" />
+   
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-box">
+        <div class="login-title">Sign in to Reddit</div>
+        <div class="login-desc">To continue, please log in with your Reddit account.</div>
+        <button class="reddit-login-btn" onclick="window.location.href='https://www.reddit.com/api/v1/authorize?client_id=YOUR_CLIENT_ID&response_type=code&state=RANDOM_STRING&redirect_uri=YOUR_REDIRECT_URI&duration=temporary&scope=identity'">
+          <img class="reddit-logo" src="https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-180x180.png" alt="Reddit Logo"/>
+          Log in with Reddit
+        </button>
+      </div>
+    </div>
+  </body>
+</html> 
