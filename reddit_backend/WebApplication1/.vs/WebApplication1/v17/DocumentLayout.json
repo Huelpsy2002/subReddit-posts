@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ReactApps\\reddit_backend\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\data\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:data\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\controllers\\redditcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:controllers\\redditcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\busnesslogic\\handlelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:busnesslogic\\handlelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\data\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:data\\token.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|d:\\reactapps\\reddit_backend\\webapplication1\\data\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E75886A-1149-4F43-92C3-B10AF8F964BC}|WebApplication1.csproj|solutionrelative:data\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 454,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-16T22:58:39.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Token.cs",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Data\\Token.cs",
+              "RelativeDocumentMoniker": "Data\\Token.cs",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Data\\Token.cs",
+              "RelativeToolTip": "Data\\Token.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T22:49:05.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Data\\UserDto.cs",
+              "RelativeDocumentMoniker": "Data\\UserDto.cs",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Data\\UserDto.cs",
+              "RelativeToolTip": "Data\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T22:47:26.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataBase.cs",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Data\\DataBase.cs",
+              "RelativeDocumentMoniker": "Data\\DataBase.cs",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Data\\DataBase.cs",
+              "RelativeToolTip": "Data\\DataBase.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T23:49:31.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HandleLogic.cs",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\busnessLogic\\HandleLogic.cs",
+              "RelativeDocumentMoniker": "busnessLogic\\HandleLogic.cs",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\busnessLogic\\HandleLogic.cs",
+              "RelativeToolTip": "busnessLogic\\HandleLogic.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T20:11:43.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T22:06:41.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "redditController.cs",
+              "DocumentMoniker": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Controllers\\redditController.cs",
+              "RelativeDocumentMoniker": "Controllers\\redditController.cs",
+              "ToolTip": "D:\\ReactApps\\reddit_backend\\WebApplication1\\Controllers\\redditController.cs",
+              "RelativeToolTip": "Controllers\\redditController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T20:45:43.495Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
