@@ -1,0 +1,503 @@
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(ellipse at top center, #2a2a2d 0%, #1a1a1b 70%),
+    #1a1a1b;
+  border: 3px solid #222224;
+  border-radius: 16px;
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 32px rgba(50, 50, 50, 0.2);
+}
+
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  height: 100px;
+  position: relative;
+  background:
+    linear-gradient(to bottom, #2a2a2d 0%, #1f1f21 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+
+
+
+#subReddit-input {
+  background: #232326;
+  color: #807d7d;
+  width: 100%;
+  max-width: 350px;
+  min-width: 120px;
+  border: 1.5px solid #2d2c2c;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.8s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) inset;
+}
+
+#subReddit-input:focus {
+  box-shadow: 0 0 0 2px rgba(42, 41, 41, 0.15);
+  background: #2a2a2d;
+}
+
+.avatar {
+  width: 9vw;
+  height: 9vw;
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 50%;
+  border: 2px solid #2e2e31;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userName {
+  color: #807d7d;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userInfosMenu {
+  position: absolute;
+  top: 90%;
+  right: 0;
+  min-width: 150px;
+  background: linear-gradient(135deg, #2a2a2d 0%, #1f1f21 100%);
+  border: 2px solid #2e2e31;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  margin-top: 8px;
+  padding: 16px;
+
+
+}
+.userInfosMenu:hover {
+  display: block;
+}
+
+
+
+
+
+.AddSubRedditButton {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 30px;
+  color: #373738;
+  cursor: pointer;
+}
+
+.AddSubRedditButton:hover {
+  color: #313132;
+
+}
+
+.lane {
+  flex: 0 1 calc(31.333%);
+  /* 3 per row, minus gap */
+  min-width: 200px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #2e2e31;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #232326 0%, #29292b 100%);
+  color: #e0e0e0;
+  margin: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10) inset;
+  transition: background 0.3s;
+  position: relative;
+  overflow-y: auto;
+
+}
+
+/* For Chrome, Edge, Safari */
+.lane::-webkit-scrollbar {
+  width: 5px;
+  /* width of the scrollbar */
+  background: #232326;
+  /* background of the scrollbar track */
+  border-radius: 8px;
+}
+
+.lane::-webkit-scrollbar-thumb {
+  background: #363535;
+  /* color of the scrollbar thumb */
+  border-radius: 8px;
+}
+
+.lane::-webkit-scrollbar-thumb:hover {
+  background: #302f2e;
+  /* color on hover */
+}
+
+/* For Firefox */
+.lane {
+  scrollbar-width: thin;
+  /* "auto" or "thin" */
+  scrollbar-color: #3a3938 #232326;
+  /* thumb color, track color */
+}
+
+.deleteLaneBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+
+  background: #232326;
+  color: #4d4b4b;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.lane-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  margin-left: 0.5rem;
+  padding: 3px;
+
+  border-bottom: 1px solid rgb(43, 43, 44);
+
+}
+
+.RequestState {
+  position: absolute;
+  left: 70%;
+  color: #0d0c0c;
+}
+
+
+input:-webkit-autofill {
+  /* this code to prevent the browser changing the input style    */
+  background-color: #232326 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #222 inset !important;
+  -webkit-text-fill-color: #807d7d !important;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.post {
+  box-sizing: border-box;
+  padding: 10px 40px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  height: 200px;
+  /* Fixed height */
+  border-bottom: 1px solid rgb(33, 31, 31);
+
+
+}
+
+.post h4 {
+  margin: 0 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* Prevents title from wrapping */
+}
+
+.post p {
+  margin: 0 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.post:hover {
+  background-color: #29292b;
+}
+
+.author-comments {
+  margin-top: 5px;
+  display: flex;
+  gap: 2rem;
+  color: #515154;
+}
+
+.votes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  gap: 16px;
+  top: 20px;
+  left: 10px;
+  color: rgba(228, 112, 24, 0.936);
+  font-size: 15px;
+
+}
+.faviorite{
+  color: #515154;
+  cursor: pointer;
+}
+
+.faviorite.active {
+  color: rgba(228, 112, 24, 0.936);
+
+}
+
+.votes p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: linear-gradient(90deg, #232326 0%, #29292b 100%);
+  border-radius: 12px;
+  padding: 40px 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10) inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #2e2e31;
+}
+
+.reddit-login-btn {
+  background: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reddit-login-btn:hover {
+  background: #e03d00;
+}
+
+.reddit-logo {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+.login-title {
+  color: #e0e0e0;
+  margin-bottom: 16px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-desc {
+  color: #b0b0b0;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Menu content styles */
+.menuUserHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.menuAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #2e2e31;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.menuAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.menuUserDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.menuUserName {
+  margin: 0 0 4px 0;
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuUserKarma {
+  margin: 0;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.menuDivider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2e2e31, transparent);
+  margin: 12px 0;
+}
+
+.menuUserStats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+.statItem i {
+  width: 16px;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+
+
+
+
+
+/* Update the menu width to accommodate content */
+.userInfosMenu {
+  min-width: 280px;
+  max-width: 320px;
+}
+
+.logout-btn {
+  padding: 4px 8px;
+  background: linear-gradient(90deg, #ff4500 0%, #ff8717 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10) inset;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-radius 0.2s;
+  min-width: unset;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-btn i {
+  font-size: 1.1rem;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(90deg, #ff8717 0%, #ff4500 100%);
+  color: #222;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  border-radius: 50%;
+}
