@@ -64,6 +64,10 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("AllowReactDev");
 
+app.UseDefaultFiles(); // Look for index.html
+app.UseStaticFiles();
+app.MapFallbackToFile("index.html");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
