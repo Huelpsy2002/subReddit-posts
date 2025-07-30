@@ -23,7 +23,7 @@ function Main(props) {
         
             if( isSubRedditExist()) return //check if subReddit already exist,for better UI
             try {
-                let response = await fetch(`http://localhost:5000/api/getLanes?userId=${props.user.id}`,{
+                let response = await fetch(`/api/getLanes?userId=${props.user.id}`,{
                     method:"GET",
                     credentials:"include",
                    
