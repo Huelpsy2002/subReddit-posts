@@ -1,0 +1,16 @@
+{
+    "name": "reddit-project",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "install": "npm run install:frontend && npm run install:backend",
+      "install:frontend": "cd frontend && npm install",
+      "install:backend": "cd backend/WebApplication1 && dotnet restore",
+      "build": "cd frontend && npm run build",
+      "start": "cd backend/WebApplication1 && dotnet run"
+    },
+    "devDependencies": {
+      "concurrently": "^8.0.1"
+    }
+  }
+  
