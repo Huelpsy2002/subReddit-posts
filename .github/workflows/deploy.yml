@@ -1,0 +1,127 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'front-end/package-lock.json'
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Restore .NET dependencies
+      run: dotnet restore back-end/WebApplication1/WebApplication1.csproj
+    - name: Set frontend env vars
+      run: |
+        cat > front-end/.env.production <<EOF
+        VITE_REDDIT_CLIENT_ID=oqDdAqhQU0dTNglzrH94uQ
+        VITE_REDDIT_REDIRECT_URI=http://localhost:5173/auth/callback
+        VITE_REDDIT_STATE=dsaasajskasjasakjs
+        EOF
+
+    - name: Build React app
+      run: |
+        cd front-end
+        npm ci
+        npm run build
+    
+    - name: Build .NET app
+      run: |
+        cd back-end/WebApplication1
+        dotnet publish -c Release -o ../publish
+    
+    - name: Create deployment package
+      run: |
+        mkdir -p deployment/api
+        mkdir -p deployment/wwwroot
+        cp -r publish/* deployment/api/
+        cp -r fornt-end/build/* deployment/wwwroot/
+        
+        # Create deployment script
+        cat > deployment/deploy.sh << 'EOF'
+        #!/bin/bash
+        set -e
+        
+        echo "🚀 Starting deployment..."
+        
+        # Stop the service
+        echo "⏹️  Stopping application service..."
+        sudo systemctl stop subreddit-posts.service || true
+        
+        # Backup current version
+        if [ -d "/var/www/subreddit-posts/api" ]; then
+            echo "📦 Creating backup..."
+            sudo cp -r /var/www/subreddit-posts/api /var/www/subreddit-posts/api.backup.$(date +%Y%m%d_%H%M%S) || true
+        fi
+        
+        # Deploy new version
+        echo "📋 Deploying new version..."
+        sudo rm -rf /var/www/subreddit-posts/api/*
+        sudo rm -rf /var/www/subreddit-posts/wwwroot/*
+        
+        sudo cp -r ~/deployment/api/* /var/www/subreddit-posts/api/
+        sudo cp -r ~/deployment/wwwroot/* /var/www/subreddit-posts/wwwroot/
+        
+        # Set permissions
+        echo "🔐 Setting permissions..."
+        sudo chown -R www-data:www-data /var/www/subreddit-posts
+        sudo chmod +x /var/www/subreddit-posts/api/SubRedditAPI
+        
+        # Start the service
+        echo "▶️  Starting application service..."
+        sudo systemctl start subreddit-posts.service
+        sudo systemctl status subreddit-posts.service --no-pager
+        
+        # Clean up
+        rm -rf ~/deployment
+        
+        echo "✅ Deployment completed successfully!"
+        EOF
+        
+        chmod +x deployment/deploy.sh
+    
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        script_stop: true
+        script: |
+          # Remove old deployment files
+          rm -rf ~/deployment
+          
+    - name: Copy files to EC2
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        source: "deployment/*"
+        target: "~/"
+        
+    - name: Execute deployment script
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        script: |
+          chmod +x ~/deployment/deploy.sh
+          ~/deployment/deploy.sh
