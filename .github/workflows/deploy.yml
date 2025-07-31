@@ -51,7 +51,7 @@ jobs:
         mkdir -p deployment/api
         mkdir -p deployment/wwwroot
         cp -r publish/* deployment/api/
-        cp -r front-end/build/* deployment/wwwroot/
+        cp -r front-end/dist/* deployment/wwwroot/
         
         # Create deployment script
         cat > deployment/deploy.sh << 'EOF'
