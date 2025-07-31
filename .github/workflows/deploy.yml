@@ -43,8 +43,8 @@ jobs:
     
     - name: Build .NET app
       run: |
-        cd back-end/WebApplication1
-        dotnet publish -c Release -o ../publish
+        
+        dotnet publish back-end/WebApplication1 -c Release -o ./publish
     
     - name: Create deployment package
       run: |
@@ -81,7 +81,7 @@ jobs:
         # Set permissions
         echo "🔐 Setting permissions..."
         sudo chown -R www-data:www-data /var/www/subreddit-posts
-        sudo chmod +x /var/www/subreddit-posts/api/SubRedditAPI
+        sudo chmod +x /var/www/subreddit-posts/api/WebApplication1
         
         # Start the service
         echo "▶️  Starting application service..."
