@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter,Routes, Route ,useLocation} from "react-router-dom"
+import { Routes, Route ,useLocation} from "react-router-dom"
 import AuthCallback from "./components/AuthCallBack";
 import Login from "./components/Login";
 import Home from "./home";
@@ -74,12 +74,12 @@ function App() {
 
   return (
 
-    <BrowserRouter>
+    
     <Routes>
       <Route path="/" element={isLoggedIn && !isLoading ? <Home user={user} /> : <Login />} />
       <Route path="/auth/callback" element={<AuthCallback setIsLoggedIn = {setIsLoggedIn} setIsLoading = {setIsLoading}/>} />
     </Routes>
-    </BrowserRouter >
+    
   )
 }
 
