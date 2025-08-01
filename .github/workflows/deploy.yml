@@ -31,7 +31,7 @@ jobs:
       run: |
         cat > front-end/.env.production <<EOF
         VITE_REDDIT_CLIENT_ID=oqDdAqhQU0dTNglzrH94uQ
-        VITE_REDDIT_REDIRECT_URI=http://localhost:5173/auth/callback
+        VITE_REDDIT_REDIRECT_URI=http://subredditposts.duckdns.org/auth/callback
         VITE_REDDIT_STATE=dsaasajskasjasakjs
         EOF
 
