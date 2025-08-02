@@ -4,7 +4,6 @@ import {useLocation} from "react-router-dom"
 
 
 
-
 function Main(props) {
     const [lanes, setLanes] = useState([])
     const [isLoading,setIsLoading] = useState(true)
@@ -52,7 +51,7 @@ function Main(props) {
         
        
         try{
-           let response = await fetch(`http://localhost:5000/api/deleteLane?userId=${props.user.id}&laneName=${name}`,{
+           let response = await fetch(`/api/deleteLane?userId=${props.user.id}&laneName=${name}`,{
             method:"GET",
             credentials:"include"
            }) 

@@ -6,6 +6,7 @@ function AuthCallback(props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [logginState, setLogginState] = useState("Loggin You In ...")
   const navigate = useNavigate();
+  const url = import.meta.env.VITE_API_URL
 
 
 
@@ -18,7 +19,7 @@ function AuthCallback(props) {
 
   async function SendCodeToBackend(code) {
     try {
-      let response = await fetch("/api/callBack", {
+      let response = await fetch(`/api/callBack`, {
         method: "POST",
         credentials: "include",
         headers: {

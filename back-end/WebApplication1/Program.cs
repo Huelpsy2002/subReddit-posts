@@ -73,7 +73,7 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-app.UseCors("AllowReactDev");
+app.UseCors("AllowFrontend");
 
 app.UseDefaultFiles(); // Look for index.html
 app.UseStaticFiles();

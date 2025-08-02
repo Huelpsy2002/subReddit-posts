@@ -13,7 +13,7 @@ function Header(props) {
 
   async function logout() {
         
-       let response = await fetch("/api/logout", {
+       let response = await fetch(`/api/logout`, {
             method: "POST", 
             credentials: "include" 
         })
@@ -25,7 +25,7 @@ function Header(props) {
 
   async function saveSubReddit(inputValue){
     try {
-        const response = await fetch('/api/saveLane', {
+        const response = await fetch(`/api/saveLane`, {
             method: 'POST',
             credentials: "include",
             headers: {
