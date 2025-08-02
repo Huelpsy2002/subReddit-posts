@@ -48,17 +48,28 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactDev",
-        policy =>
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        if (builder.Environment.IsDevelopment())
         {
-            policy.WithOrigins("http://localhost:5173")
+            
+            policy.WithOrigins("http://localhost:5173", "http://localhost:3000")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
-                  .AllowCredentials(); 
-
-        });
+                  .AllowCredentials();
+        }
+        else
+        {
+            
+            policy.WithOrigins("http://subredditposts.duckdns.org", "https://subredditposts.duckdns.org")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        }
+    });
 });
 
 var app = builder.Build();
