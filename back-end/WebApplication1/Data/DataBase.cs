@@ -167,6 +167,7 @@ namespace WebApplication1.Data
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("error fetching lanes");
                 return null;
             }
