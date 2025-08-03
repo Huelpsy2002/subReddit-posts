@@ -157,41 +157,21 @@ namespace WebApplication1.Data
 
         }
         public async Task<List<lane>> getLanes(string userId)
-{
-    var database = client.GetDatabase("redditClient");
-    var collection = database.GetCollection<lane>("lanes");
-    
-    try
-    {
-        Console.WriteLine($"[getLanes] Starting - UserId: '{userId}' (Length: {userId?.Length})");
-        Console.WriteLine($"[getLanes] Collection name: {collection.CollectionNamespace.CollectionName}");
-        
-        // Check if collection exists and has documents
-        long totalCount = await collection.CountDocumentsAsync(FilterDefinition<lane>.Empty);
-        Console.WriteLine($"[getLanes] Total documents in lanes collection: {totalCount}");
-        
-        // Build the filter
-        var filter = Builders<lane>.Filter.Eq(l => l.userId, userId);
-        Console.WriteLine($"[getLanes] Filter created for userId: {userId}");
-        
-        // Execute the query
-        var lanes = await collection.Find(filter).ToListAsync();
-        Console.WriteLine($"[getLanes] Query executed successfully - Found {lanes.Count} lanes");
-        
-        return lanes;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"[getLanes] Exception Type: {ex.GetType().Name}");
-        Console.WriteLine($"[getLanes] Exception Message: {ex.Message}");
-        Console.WriteLine($"[getLanes] Stack Trace: {ex.StackTrace}");
-        if (ex.InnerException != null)
         {
-            Console.WriteLine($"[getLanes] Inner Exception: {ex.InnerException.Message}");
+            var database = client.GetDatabase("redditClient");
+            var collection = database.GetCollection<lane>("lanes");
+            try
+            {
+                var lanes = await collection.Find(l => l.userId == userId).ToListAsync();
+                return lanes;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("error fetching lanes");
+                return null;
+            }
         }
-        return null;
-    }
-}
         public async Task<bool> deleteLane(string name, string userId)
         {
             var database = client.GetDatabase("redditClient");

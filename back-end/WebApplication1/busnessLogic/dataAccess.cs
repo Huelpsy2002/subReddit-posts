@@ -85,11 +85,11 @@ namespace WebApplication1.busnessLogic
             try
             {
                 var lanes = await _database.getLanes(userId);
+                Console.WriteLine($"lanes count : {lanes.Count}");
                 List<RedditResponse> subRedditPosts = new List<RedditResponse>();
                 foreach (var l in lanes)
                 {
                     var subReddit = await fetchSubReddit(l.name);
-
                     subRedditPosts.Add(subReddit);
 
                 }
@@ -138,6 +138,8 @@ namespace WebApplication1.busnessLogic
 
                 if (response == null || !response.IsSuccessStatusCode)
                 {
+                    Console.WriteLine(response.StatusCode);
+                    Console.WriteLine(response.Content.ReadAsStringAsync());
                     throw new Exception("Error fetching subreddit");
                 }
 
