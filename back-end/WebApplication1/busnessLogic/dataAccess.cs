@@ -91,7 +91,7 @@ namespace WebApplication1.busnessLogic
                 {
                     var subReddit = await fetchSubReddit(l.name);
                     subRedditPosts.Add(subReddit);
-                    Task.Delay(2000);
+                    Task.Delay(5000);
 
                 }
                 return subRedditPosts;
@@ -124,10 +124,28 @@ namespace WebApplication1.busnessLogic
         }
         private async Task<RedditResponse> fetchSubReddit(string subreddit)
         {
+            private static readonly string[] UserAgents = {
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0"
+            };
+
             using HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("subreddit-post-fetcher/1.0");
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("subreddit-post-fetcher/1.0 (contact: hussinali.dev@gmail.com)");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            var random = new Random();
+            var userAgent = UserAgents[random.Next(UserAgents.Length)];
+            client.DefaultRequestHeaders.UserAgent.ParseAdd(userAgent);
+            
+            // Add realistic browser headers
+            client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+            client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.5");
+            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+            client.DefaultRequestHeaders.Add("DNT", "1");
+            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Dest", "document");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "navigate");
+            client.DefaultRequestHeaders.Add("Sec-Fetch-Site", "none");
+    
 
 
             try
