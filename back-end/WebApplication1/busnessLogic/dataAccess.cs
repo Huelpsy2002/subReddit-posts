@@ -125,7 +125,16 @@ namespace WebApplication1.busnessLogic
         {
             using HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.UserAgent.ParseAdd("subreddit-post-fetcher/1.0");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("subreddit-post-fetcher/1.0 (contact: hussinali.dev@gmail.com)");
+
             client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7");
+            client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.9");
+            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+            client.DefaultRequestHeaders.Add("DNT", "1");
+            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
+
             try
             {
                 string url = $"https://www.reddit.com/r/{subreddit}.json";
@@ -138,8 +147,9 @@ namespace WebApplication1.busnessLogic
 
                 if (response == null || !response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine(response.StatusCode);
-                    Console.WriteLine(response.Content.ReadAsStringAsync());
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error response status: {response.StatusCode}");
+                    Console.WriteLine($"Error response content: {errorContent}");
                     throw new Exception("Error fetching subreddit");
                 }
 
