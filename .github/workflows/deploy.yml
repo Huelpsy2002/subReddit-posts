@@ -45,7 +45,10 @@ jobs:
       run: |
         
         dotnet publish back-end/WebApplication1 -c Release -o ./publish
-    
+
+    - name: Create appsettings.Production.json from secret
+      run: |
+        echo '${{ secrets.APPSETTINGS_PRODUCTION_JSON }}' > ./publish/appsettings.Production.json
     - name: Create deployment package
       run: |
         mkdir -p deployment/api
@@ -53,6 +56,9 @@ jobs:
         cp -r publish/* deployment/api/
         cp -r front-end/dist/* deployment/wwwroot/
         
+        echo "Checking if appsettings.Production.json exists in deployment:"
+         ls -la deployment/api/appsettings.Production.json
+
         # Create deployment script
         cat > deployment/deploy.sh << 'EOF'
         #!/bin/bash
