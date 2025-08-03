@@ -124,8 +124,8 @@ namespace WebApplication1.busnessLogic
         private async Task<RedditResponse> fetchSubReddit(string subreddit)
         {
             using HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("CSharpApp/1.0");
-
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("subreddit-post-fetcher/1.0");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
             try
             {
                 string url = $"https://www.reddit.com/r/{subreddit}.json";
