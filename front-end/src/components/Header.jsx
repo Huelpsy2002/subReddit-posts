@@ -49,7 +49,7 @@ function Header(props) {
       
     
     } catch (error) {
-        alert('Request failed:', error.message);
+        alert('error saving subreddit');
     }
     
   }

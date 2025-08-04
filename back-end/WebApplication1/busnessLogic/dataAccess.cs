@@ -91,7 +91,7 @@ namespace WebApplication1.busnessLogic
                 {
                     var subReddit = await fetchSubReddit(l.name,token);
                     subRedditPosts.Add(subReddit);
-                   await  Task.Delay(2000);
+                   await  Task.Delay(2000);//rate limiting
 
                 }
                 return subRedditPosts;
@@ -139,6 +139,7 @@ namespace WebApplication1.busnessLogic
 
                 if (response.StatusCode == HttpStatusCode.NotFound)
                 {
+                    Console.WriteLine($"Error response status: {response.StatusCode}");
                     return null;
                 }
 
@@ -146,8 +147,9 @@ namespace WebApplication1.busnessLogic
                 {
                     string errorContent = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Error response status: {response.StatusCode}");
-
+                    
                     throw new Exception("Error fetching subreddit");
+                    
                 }
 
                 string jsonString = await response.Content.ReadAsStringAsync();
