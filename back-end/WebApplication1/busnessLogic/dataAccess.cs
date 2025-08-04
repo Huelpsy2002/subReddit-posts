@@ -130,6 +130,8 @@ namespace WebApplication1.busnessLogic
             var url = $"https://oauth.reddit.com/r/{subreddit}/hot?limit={25}";
             using var request = new HttpRequestMessage(HttpMethod.Get, url);
             request.Headers.Add("Authorization", $"Bearer {token}");
+            request.Headers.Add("User-Agent", "SubBrowse");
+
             try
             {
                 var response = await client.SendAsync(request);
@@ -144,7 +146,7 @@ namespace WebApplication1.busnessLogic
                 {
                     string errorContent = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Error response status: {response.StatusCode}");
-                
+
                     throw new Exception("Error fetching subreddit");
                 }
 
