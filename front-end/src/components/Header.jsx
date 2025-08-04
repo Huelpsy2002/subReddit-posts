@@ -42,6 +42,9 @@ function Header(props) {
         if (response.status===400 || response.status===409) {
             props.setRequestState(json.message)
         }
+        if(response.status==500){
+            props.setRequestState("server error")
+        }
         setTimeout(() => {
             props.setRequestState("") //clean the request state after 5 seconds
         }, 5000);
@@ -49,9 +52,7 @@ function Header(props) {
       
     
     } catch (error) {
-        alert(error.message);
-        alert(error.response.status)
-        alert(error.response.statusText)
+        alert("Exception")
     }
     
   }
