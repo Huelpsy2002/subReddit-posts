@@ -49,7 +49,9 @@ function Header(props) {
       
     
     } catch (error) {
-        alert('error saving subreddit');
+        alert(error.message);
+        alert(error.response.status)
+        alert(error.response.statusText)
     }
     
   }
