@@ -129,7 +129,7 @@ namespace WebApplication1.Controllers
                 return Unauthorized("Reddit access token expired");
             try
             {
-                await _dataAccess.insertLane(laneDto.laneName, laneDto.userId);
+                await _dataAccess.insertLane(laneDto.laneName, laneDto.userId,tokenInfo.AccessToken);
                 return Ok(new { message = "lane saved" });
 
 
@@ -167,7 +167,7 @@ namespace WebApplication1.Controllers
                 return Unauthorized("Reddit access token expired");
             try
             {
-                var lanes = await _dataAccess.getLanes(userId);
+                var lanes = await _dataAccess.getLanes(userId,tokenInfo.AccessToken);
 
                 if (lanes != null)
                 {

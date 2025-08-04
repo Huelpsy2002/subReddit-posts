@@ -45,11 +45,11 @@ namespace WebApplication1.busnessLogic
 
         }
 
-        public async Task insertLane(string name, string userId)
+        public async Task insertLane(string name, string userId,string token)
         {
             try
             {
-                var subReddit = await fetchSubReddit(name);
+                var subReddit = await fetchSubReddit(name,token);
                 if (subReddit != null)
                 {
                     var inserted = await _database.insertLane(name, userId);
@@ -79,7 +79,7 @@ namespace WebApplication1.busnessLogic
                 throw new Exception("Failed to insert lane: " + ex.Message);
             }
         }
-        public async Task<List<RedditResponse>> getLanes(string userId)
+        public async Task<List<RedditResponse>> getLanes(string userId , string token)
         {
 
             try
@@ -89,9 +89,9 @@ namespace WebApplication1.busnessLogic
                 List<RedditResponse> subRedditPosts = new List<RedditResponse>();
                 foreach (var l in lanes)
                 {
-                    var subReddit = await fetchSubReddit(l.name);
+                    var subReddit = await fetchSubReddit(l.name,token);
                     subRedditPosts.Add(subReddit);
-                    Task.Delay(5000);
+                   await  Task.Delay(2000);
 
                 }
                 return subRedditPosts;
@@ -122,31 +122,18 @@ namespace WebApplication1.busnessLogic
                 return false;
             }
         }
-        private async Task<RedditResponse> fetchSubReddit(string subreddit)
+        private async Task<RedditResponse> fetchSubReddit(string subreddit ,string token)
         {
            
 
             using HttpClient client = new HttpClient();
-
-
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
-            // Add realistic browser headers
-            client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
-            client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.5");
-            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
-            client.DefaultRequestHeaders.Add("DNT", "1");
-            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
-            client.DefaultRequestHeaders.Add("Upgrade-Insecure-Requests", "1");
-            client.DefaultRequestHeaders.Add("Sec-Fetch-Dest", "document");
-            client.DefaultRequestHeaders.Add("Sec-Fetch-Mode", "navigate");
-            client.DefaultRequestHeaders.Add("Sec-Fetch-Site", "none");
-    
-
-
+            var url = $"https://oauth.reddit.com/r/{subreddit}/hot?limit={25}";
+            using var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Add("Authorization", $"Bearer {token}");
             try
             {
-                string url = $"https://www.reddit.com/r/{subreddit}.json";
-                var response = await client.GetAsync(url);
+                var response = await client.SendAsync(request);
+
 
                 if (response.StatusCode == HttpStatusCode.NotFound)
                 {
