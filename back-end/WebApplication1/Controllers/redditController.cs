@@ -144,6 +144,7 @@ namespace WebApplication1.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"exciption:{ex.Message}");
                 return StatusCode(500, "Failed to insert lane.");
 
             }
