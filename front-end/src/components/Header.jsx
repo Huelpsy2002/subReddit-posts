@@ -24,36 +24,51 @@ function Header(props) {
     }
 
   async function saveSubReddit(inputValue){
-    try {
-        const response = await fetch(`/api/saveLane`, {
-            method: 'POST',
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
-              },
-            body: JSON.stringify({
-                userId: props.user.id,
-                laneName:inputValue
-                
-            })
-        });
-        let json = await response.json()
-        
-        if (response.status===400 || response.status===409) {
-            props.setRequestState(json.message)
+   try {
+    const response = await fetch(`/api/saveLane`, {
+        method: 'POST',
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId: props.user.id,
+            laneName: inputValue
+        })
+    });
+
+    if (response.status === 400 || response.status === 409) {
+        try {
+            let json = await response.json();
+            props.setRequestState(json.message || "Bad request");
+        } catch (jsonError) {
+            props.setRequestState("Bad request");
         }
-        if(response.status==500){
-            props.setRequestState("server error")
-        }
-        setTimeout(() => {
-            props.setRequestState("") //clean the request state after 5 seconds
-        }, 5000);
-    
-      
-    
-    } catch (error) {
-        alert("Exception")
     }
+    else if (response.status === 500) {
+        props.setRequestState("Server error");
+    }
+    else if (response.ok) {
+            let json = await response.json();
+            props.setRequestState("Success");
+       
+    }
+    else {
+        props.setRequestState(`Unexpected error: ${response.status}`);
+    }
+
+    setTimeout(() => {
+        props.setRequestState("") // Clean the request state after 5 seconds
+    }, 5000);
+
+} catch (error) {
+    console.error("Network or fetch error:", error);
+    props.setRequestState("Network error - please try again");
+    
+    setTimeout(() => {
+        props.setRequestState("")
+    }, 5000);
+}
     
   }
 
