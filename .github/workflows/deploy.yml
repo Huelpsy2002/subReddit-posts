@@ -33,6 +33,7 @@ jobs:
         VITE_REDDIT_CLIENT_ID=oqDdAqhQU0dTNglzrH94uQ
         VITE_REDDIT_REDIRECT_URI=http://subredditposts.duckdns.org/auth/callback
         VITE_REDDIT_STATE=dsaasajskasjasakjs
+        VITE_API_URL=/api
         EOF
 
     - name: Build React app

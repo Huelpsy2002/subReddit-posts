@@ -19,7 +19,7 @@ function AuthCallback(props) {
 
   async function SendCodeToBackend(code) {
     try {
-      let response = await fetch(`/api/callBack`, {
+      let response = await fetch(`${url}/callBack`, {
         method: "POST",
         credentials: "include",
         headers: {

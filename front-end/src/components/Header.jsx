@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import UserMenu from "./UserMenuInfo";
 
 
@@ -10,10 +9,11 @@ function Header(props) {
     const [inputValue, setInputValue] = useState("")
     const [userMenuDisplay, SetuserMenuDisplay] = useState(false)
     const navigate = useNavigate();
+    const url = import.meta.env.VITE_API_URL;
 
   async function logout() {
         
-       let response = await fetch(`/api/logout`, {
+       let response = await fetch(`${url}/logout`, {
             method: "POST", 
             credentials: "include" 
         })
@@ -25,7 +25,7 @@ function Header(props) {
 
   async function saveSubReddit(inputValue){
    try {
-    const response = await fetch(`/api/saveLane`, {
+    const response = await fetch(`${url}/saveLane`, {
         method: 'POST',
         credentials: "include",
         headers: {

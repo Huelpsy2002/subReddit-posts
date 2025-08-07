@@ -137,18 +137,14 @@ namespace WebApplication1.busnessLogic
                 var response = await client.SendAsync(request);
 
 
-                if (response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    Console.WriteLine($"Error response status: {response.StatusCode}");
-                    return null;
-                }
+        
 
                 if (response == null || !response.IsSuccessStatusCode)
                 {
                     string errorContent = await response.Content.ReadAsStringAsync();
                     Console.WriteLine($"Error response status: {response.StatusCode}");
-                    
-                    throw new Exception("Error fetching subreddit");
+
+                    return null;
                     
                 }
 

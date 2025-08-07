@@ -8,6 +8,8 @@ function Main(props) {
     const [lanes, setLanes] = useState([])
     const [isLoading,setIsLoading] = useState(true)
     let location = useLocation()
+    const url = import.meta.env.VITE_API_URL;
+
     function isSubRedditExist(){
         for(let i = 0 ; i<lanes.length ; i++){
             if(lanes[i].subredditName==props.subReddit){
@@ -22,7 +24,7 @@ function Main(props) {
         
             if( isSubRedditExist()) return //check if subReddit already exist,for better UI
             try {
-                let response = await fetch(`/api/getLanes?userId=${props.user.id}`,{
+                let response = await fetch(`${url}/getLanes?userId=${props.user.id}`,{
                     method:"GET",
                     credentials:"include",
                    
@@ -51,7 +53,7 @@ function Main(props) {
         
        
         try{
-           let response = await fetch(`/api/deleteLane?userId=${props.user.id}&laneName=${name}`,{
+           let response = await fetch(`${url}/deleteLane?userId=${props.user.id}&laneName=${name}`,{
             method:"GET",
             credentials:"include"
            }) 

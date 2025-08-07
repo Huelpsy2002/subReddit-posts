@@ -8,12 +8,13 @@ function App() {
   const [isLoading,setIsLoading] = useState(true)
   const [user, setUser] = useState(null)
   const location = useLocation()
+  const url = import.meta.env.VITE_API_URL;
 
 
 
   async function getUserInfo() {
     try {
-    let response = await fetch(`/api/me`, {
+    let response = await fetch(`${url}/me`, {
       method: "GET",
       credentials: "include"
     })
