@@ -2,6 +2,12 @@
 
 A full-stack web app that fetches and displays Reddit posts using the Reddit API. Users can authenticate via Reddit, save subreddit feeds (lanes), and access them across sessions.
 
+
+## 🖼️ Preview
+
+![App Screenshot](./Screenshot.png)
+
+
 ## 🌐 Live Demo
 
 Access the app at: [subRedditPosts](http://subredditposts.duckdns.org)
