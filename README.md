@@ -4,7 +4,7 @@ A full-stack web app that fetches and displays Reddit posts using the Reddit API
 
 ## 🌐 Live Demo
 
-Access the app at: [YourDuckDNSDomain](http://subredditposts.duckdns.org)
+Access the app at: [subRedditPosts](http://subredditposts.duckdns.org)
 
 ---
 
