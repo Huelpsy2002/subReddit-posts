@@ -43,7 +43,5 @@ Access the app at: [subRedditPosts](http://subredditposts.duckdns.org)
 - Nginx (Reverse Proxy)
 - DuckDNS (Free domain)
 
----
 
-## 📦 Project Structure
 
